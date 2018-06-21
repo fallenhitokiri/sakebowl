@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 
+from website.models import Configuration
+
 
 class Template(models.Model):
     name = models.CharField(max_length=200)
     template = models.TextField()
+    configuration = models.ForeignKey(
+        Configuration,
+        on_delete=models.DO_NOTHING,
+        related_name="templates"
+    )
 
     def __unicode__(self):
         return self.name

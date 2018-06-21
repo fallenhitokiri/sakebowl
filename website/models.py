@@ -11,10 +11,16 @@ class Log(models.Model):
 
 
 class Configuration(models.Model):
+    name = models.CharField(max_length=200)
     yaml = models.TextField()
 
-    @classmethod
-    def as_config(cls):
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
+    def as_config(self):
         cfg = Config()
-        cfg.parse_yaml(cls.objects.first().yaml)
+        cfg.parse_yaml(self.yaml)
         return cfg
