@@ -1,0 +1,5 @@
+Django
+django-rest-framework
+django-extensions
+drupan
+django_q

@@ -5,7 +5,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q5m-wjq$u#v66qo5qued)dwd+r3u5#lz!gmu=8=9cu7d=^ny$7'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,6 +17,8 @@ INSTALLED_APPS = [
 
     'django_q',
     'django_extensions',
+    'rest_framework',
+    'rest_framework.authtoken',
 
     'entities',
     'website',
@@ -94,4 +96,14 @@ Q_CLUSTER = {
     'queue_limit': 50,
     'bulk': 1,
     'orm': 'default'
+}
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissions"
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+    )
 }
