@@ -7,7 +7,7 @@ from .models import Configuration
 class ConfigurationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Configuration
-        fields = ("name", )
+        fields = ("id", "name", )
 
 
 class ConfigurationViewSet(viewsets.ReadOnlyModelViewSet):
