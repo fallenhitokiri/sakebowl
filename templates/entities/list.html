@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <ul class="list-group">
+                    {% for entity in entities %}
+                        <li class="list-group-item">
+                            <a href="#">{{ entity.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-9">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block css %}
+{% endblock %}
