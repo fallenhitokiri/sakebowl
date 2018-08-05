@@ -1,0 +1,4 @@
+Django==2.0.7
+django-extensions==2.0.7
+django-q==0.9.4
+drupan>=3.0.2
