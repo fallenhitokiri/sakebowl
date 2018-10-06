@@ -8,7 +8,15 @@ from .models import Entity
 class EntitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Entity
-        fields = ("id", "title", "created_at", "updated_at", "published_at", "content", "configuration")
+        fields = (
+            "id",
+            "title",
+            "created_at",
+            "updated_at",
+            "published_at",
+            "content",
+            "configuration"
+        )
 
 
 class EntityViewSet(viewsets.ModelViewSet):
