@@ -1,0 +1,9 @@
+Dockerfile
+.git
+.gitignore
+.idea
+.DS_Store
+images
+*.sqlite
+venv
+static

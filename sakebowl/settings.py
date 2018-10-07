@@ -3,9 +3,15 @@ import os
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = 'q5m-wjq$u#v66qo5qued)dwd+r3u5#lz!gmu=8=9cu7d=^ny$7'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    'q5m-wjq$u#v66qo5qued)dwd+r3u5#lz!gmu=8=9cu7d=^ny$7'
+)
+ALLOWED_HOSTS = ["*"]
+
 DEBUG = True
-ALLOWED_HOSTS = []
+if os.environ.get("PRODUCTION", "") != "":
+    DEBUG = False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,7 +63,7 @@ WSGI_APPLICATION = 'sakebowl.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.environ.get("DB", os.path.join(BASE_DIR, 'db.sqlite3')),
     }
 }
 
@@ -85,6 +91,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.environ.get("STATIC", "static")
 
 Q_CLUSTER = {
     'name': 'DjangORM',
