@@ -6,6 +6,7 @@ django-picklefield==1.1.0
 django-q==1.0.1
 djangorestframework==3.8.2
 drupan==3.0.2
+gunicorn==19.9.0
 Jinja2==2.10
 markdown2==2.3.6
 MarkupSafe==1.0
