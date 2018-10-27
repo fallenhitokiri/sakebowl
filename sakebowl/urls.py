@@ -15,14 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
+from django.urls import path, include
+
+from rest_framework import routers
+
+from website.api import ConfigurationViewSet, trigger_deploy
 
 
 admin.site.site_header = "Sakebowl"
 
 
+router = routers.SimpleRouter()
+router.register(r"websites", ConfigurationViewSet)
+
+
 urlpatterns = [
     path('', admin.site.urls),
+    path("api/", include(router.urls)),
+    path(r"api/websites/deploy/<int:pk>", trigger_deploy)
 ]
 
 urlpatterns += staticfiles_urlpatterns()
