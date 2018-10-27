@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from website.api import ConfigurationViewSet
+from website.api import ConfigurationViewSet, trigger_deploy
 
 
 admin.site.site_header = "Sakebowl"
@@ -31,7 +31,8 @@ router.register(r"websites", ConfigurationViewSet)
 
 urlpatterns = [
     path('', admin.site.urls),
-    path("api/", include(router.urls))
+    path("api/", include(router.urls)),
+    path(r"api/websites/deploy/<int:pk>", trigger_deploy)
 ]
 
 urlpatterns += staticfiles_urlpatterns()
