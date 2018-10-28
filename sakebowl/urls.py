@@ -20,6 +20,7 @@ from django.urls import path, include
 from rest_framework import routers
 
 from website.api import ConfigurationViewSet, trigger_deploy
+from entities.api import EntityViewSet
 
 
 admin.site.site_header = "Sakebowl"
@@ -27,11 +28,12 @@ admin.site.site_header = "Sakebowl"
 
 router = routers.SimpleRouter()
 router.register(r"websites", ConfigurationViewSet)
+router.register(r"entities", EntityViewSet, base_name="entities")
 
 
 urlpatterns = [
     path('', admin.site.urls),
-    path("api/", include(router.urls)),
+    path(r"api/", include(router.urls)),
     path(r"api/websites/deploy/<int:pk>", trigger_deploy)
 ]
 
